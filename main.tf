@@ -250,7 +250,7 @@ resource "nutanix_virtual_machine" "TF-demo-01" {
   #     "echo \"Hello World\"",
   #   ]
   # }
-}
+
 
 # Show IP address
 output "ip_address" {
