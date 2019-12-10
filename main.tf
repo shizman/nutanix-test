@@ -99,12 +99,12 @@ locals {
 #   presented here as separate resources, or existing images on a cluster can be
 #   called in as data sources, which you can see in the data sources section
 #   above.
-resource "nutanix_image" "Windows_10_Disk" {
-  name = "Windows 10 Disk"
+#resource "nutanix_image" "Windows_10_Disk" {
+#  name = "Windows 10 Disk"
 
   #source_uri  = "http://endor.dyn.nutanix.com/acro_images/DISKs/cirros-0.3.4-x86_64-disk.img"
   #source_uri  = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
-  description = "Windows 10 Disk"
+#  description = "Windows 10 Disk"
 }
 
 ### Subnet Resources (Virtual Networks within AHV)
