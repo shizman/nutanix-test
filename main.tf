@@ -99,12 +99,12 @@ locals {
 #   presented here as separate resources, or existing images on a cluster can be
 #   called in as data sources, which you can see in the data sources section
 #   above.
-resource "nutanix_image" "cirros-034-disk" {
-  name = "cirros-034-disk"
+resource "nutanix_image" "Windows 10 Disk" {
+  name = "Windows_10_Disk"
 
   #source_uri  = "http://endor.dyn.nutanix.com/acro_images/DISKs/cirros-0.3.4-x86_64-disk.img"
-  source_uri  = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
-  description = "heres a tiny linux image, not an iso, but a real disk!"
+  #source_uri  = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
+  #description = "heres a tiny linux image, not an iso, but a real disk!"
 }
 
 ### Subnet Resources (Virtual Networks within AHV)
@@ -146,34 +146,34 @@ resource "nutanix_image" "cirros-034-disk" {
 # grave, even if the VM is off.
 
 # ### Define Terraform Managed Subnets
-resource "nutanix_subnet" "infra-managed-network-140" {
+resource "nutanix_subnet" "TF-managed-network-500" {
   # What cluster will this VLAN live on?
   cluster_uuid = local.cluster1
 
   # General Information
-  name        = "infra-managed-network-140"
-  vlan_id     = 140
+  name        = "TF-managed-network-500"
+  vlan_id     = 500
   subnet_type = "VLAN"
 
   # Provision a Managed L3 Network
   # This bit is only needed if you intend to turn on AHV's IPAM
-  subnet_ip = "172.21.32.0"
+  subnet_ip = "10.0.5.0"
 
-  default_gateway_ip = "172.21.32.1"
+  default_gateway_ip = "10.0.5.1"
   prefix_length      = 24
 
   dhcp_options = {
     boot_file_name   = "bootfile"
-    domain_name      = "ntnxlab"
-    tftp_server_name = "172.21.32.200"
+    domain_name      = "internal.shizman.com"
+    #tftp_server_name = "172.21.32.200"
   }
 
   dhcp_server_address = {
-    ip = "172.21.32.254"
+    ip = "10.0.5.254"
   }
 
-  dhcp_domain_name_server_list = ["172.21.30.223"]
-  dhcp_domain_search_list      = ["ntnxlab.local"]
+  dhcp_domain_name_server_list = ["10.0.1.100"]
+  dhcp_domain_search_list      = ["internal.shizman.com"]
   #ip_config_pool_list_ranges   = ["172.21.32.3 172.21.32.253"] 
 }
 
@@ -187,10 +187,10 @@ resource "nutanix_subnet" "infra-managed-network-140" {
 # Prism Self Service Portal. That said, if you're doing ESXi, it is most likely
 # that would deploy them via a VMware provider against vCenter APIs.
 
-resource "nutanix_virtual_machine" "demo-01-web" {
+resource "nutanix_virtual_machine" "TF-demo-01" {
   # General Information
-  name                 = "demo-01-web"
-  description          = "demo Frontend Web Server"
+  name                 = "TF-demo-01"
+  description          = "Demo Terraform VM"
   num_vcpus_per_socket = 2
   num_sockets          = 1
   memory_size_mib      = 4096
@@ -201,7 +201,7 @@ resource "nutanix_virtual_machine" "demo-01-web" {
   # What networks will this be attached to?
   nic_list {
     # subnet_reference is saying, which VLAN/network do you want to attach here?
-    subnet_uuid = nutanix_subnet.infra-managed-network-140.id
+    subnet_uuid = nutanix_subnet.TF-managed-network-500.id
     # Used to set static IP.
     # ip_endpoint_list {
     #   ip   = "172.21.32.20"
@@ -216,7 +216,7 @@ resource "nutanix_virtual_machine" "demo-01-web" {
     # image like we're doing here
     data_source_reference = {
         kind = "image"
-        uuid = nutanix_image.cirros-034-disk.id
+        uuid = nutanix_image.Windows_10_Disk.id
       }
       
 
@@ -229,12 +229,12 @@ resource "nutanix_virtual_machine" "demo-01-web" {
       device_type = "DISK"
     }
   }
-  disk_list {
+  #disk_list {
     # defining an additional entry in the disk_list array will create another.
 
     #disk_size_mib and disk_size_bytes must be set together.
-    disk_size_mib   = 100000
-    disk_size_bytes = 104857600000
+    #disk_size_mib   = 100000
+    #disk_size_bytes = 104857600000
   }
   #Using provisioners
   #Use as the following provisioner block if you know that you are geeting an reachable IP address.
