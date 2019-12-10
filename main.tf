@@ -254,5 +254,5 @@ resource "nutanix_virtual_machine" "TF-demo-01" {
 
 # Show IP address
 output "ip_address" {
-  value = nutanix_virtual_machine.demo-01-web.nic_list_status.0.ip_endpoint_list[0]["ip"]
+  value = nutanix_virtual_machine.TF-demo-01.nic_list_status.0.ip_endpoint_list[0]["ip"]
 }
