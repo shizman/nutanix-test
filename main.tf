@@ -61,9 +61,9 @@ locals {
 
 ### Image Data Sources
 data "nutanix_image" "Windows_10_Disk" {
-     metadata = {
-         kind = "image"
-     }
+     #metadata = {
+         #kind = "image"
+     #}
    image_id = "ace1ae3a-67e9-4af1-9733-00f09499e87f"
   #image_id = nutanix_image.Windows_10_Disk.id
   }
