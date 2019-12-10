@@ -64,7 +64,7 @@ data "nutanix_image" "Windows_10_Disk" {
          kind = "image"
      }
     # image_id = nutanix_image.Windows_10_Disk.id
-# }
+  }
 ### Subnet Data Sources
 # data "nutanix_subnet" "next-iac-managed" {
 #     metadata = {
