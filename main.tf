@@ -256,5 +256,3 @@ resource "nutanix_virtual_machine" "demo-01-web" {
 output "ip_address" {
   value = nutanix_virtual_machine.demo-01-web.nic_list_status.0.ip_endpoint_list[0]["ip"]
 }
-
-© 2019 GitHub, Inc.
