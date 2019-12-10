@@ -61,9 +61,9 @@ locals {
 ### Image Data Sources
 data "nutanix_image" "Windows_10_Disk" {
      metadata = {
-         kind = "image"
+         kind = "DISK_IMAGE"
      }
-    # image_id = nutanix_image.Windows_10_Disk.id
+    image_id = nutanix_image.Windows_10_Disk.id
   }
 ### Subnet Data Sources
 # data "nutanix_subnet" "next-iac-managed" {
