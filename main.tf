@@ -177,7 +177,7 @@ resource "nutanix_subnet" "TF-managed-network-500" {
 
   dhcp_domain_name_server_list = ["10.0.1.100"]
   dhcp_domain_search_list      = ["internal.shizman.com"]
-  #ip_config_pool_list_ranges   = ["172.21.32.3 172.21.32.253"] 
+  ip_config_pool_list_ranges   = ["10.0.5.3 10.0.5.253"] 
 }
 
 ### Virtual Machine Resources
