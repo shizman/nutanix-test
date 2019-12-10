@@ -105,7 +105,7 @@ locals {
   #source_uri  = "http://endor.dyn.nutanix.com/acro_images/DISKs/cirros-0.3.4-x86_64-disk.img"
   #source_uri  = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
 #  description = "Windows 10 Disk"
-}
+#}
 
 ### Subnet Resources (Virtual Networks within AHV)
 ## Related Product Docs:
