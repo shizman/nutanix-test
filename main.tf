@@ -104,7 +104,7 @@ resource "nutanix_image" "Windows 10 Disk" {
 
   #source_uri  = "http://endor.dyn.nutanix.com/acro_images/DISKs/cirros-0.3.4-x86_64-disk.img"
   #source_uri  = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
-  #description = "heres a tiny linux image, not an iso, but a real disk!"
+  description = "Windows 10 Disk"
 }
 
 ### Subnet Resources (Virtual Networks within AHV)
