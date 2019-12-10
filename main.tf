@@ -148,7 +148,7 @@ data "nutanix_image" "Windows_10_Disk" {
 # Note: an AHV managed IP address will "stick" with the VM from cradle to
 # grave, even if the VM is off.
 
-# ### Define Terraform Managed Subnets
+# ###  Define Terraform Managed Subnets
 resource "nutanix_subnet" "TF-managed-network-500" {
   # What cluster will this VLAN live on?
   cluster_uuid = local.cluster1
