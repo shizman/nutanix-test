@@ -158,7 +158,7 @@ resource "nutanix_subnet" "TF-managed-network-500" {
   vlan_id     = 500
   subnet_type = "VLAN"
 
-  #  Provision a Managed L3 Network
+  # Provision a Managed L3 Network
   # This bit is only needed if you intend to turn on AHV's IPAM
   subnet_ip = "10.0.5.0"
 
