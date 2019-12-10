@@ -59,12 +59,12 @@ locals {
 #   vm_id = nutanix_virtual_machine.vm1.id
 # }
 ### Image Data Sources
-# data "nutanix_image" "test" {
-#     metadata = {
-#         kind = "image"
-#     }
-#     image_id = nutanix_image.test.id
-# }
+data "nutanix_image" "Windows_10_Disk" {
+     metadata = {
+         kind = "image"
+     }
+     image_id = nutanix_image.Windows_10_Disk.id
+ }
 ### Subnet Data Sources
 # data "nutanix_subnet" "next-iac-managed" {
 #     metadata = {
