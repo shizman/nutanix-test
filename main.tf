@@ -61,7 +61,7 @@ locals {
 ### Image Data Sources
 data "nutanix_image" "Windows_10_Disk" {
      metadata = {
-         kind = "DISK_IMAGE"
+         kind = "image"
      }
     image_id = nutanix_image.Windows_10_Disk.id
   }
@@ -99,13 +99,13 @@ data "nutanix_image" "Windows_10_Disk" {
 #   presented here as separate resources, or existing images on a cluster can be
 #   called in as data sources, which you can see in the data sources section
 #   above.
-# resource "nutanix_image" "Windows_10_Disk" {
-#  name = "Windows_10_Disk"
+resource "nutanix_image" "Windows_10_Disk" {
+name = "Windows_10_Disk"
 
   #source_uri  = "http://endor.dyn.nutanix.com/acro_images/DISKs/cirros-0.3.4-x86_64-disk.img"
   #source_uri  = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
 #  description = "Windows 10 Disk"
-# }
+ }
 
 ### Subnet Resources (Virtual Networks within AHV)
 ## Related Product Docs:
