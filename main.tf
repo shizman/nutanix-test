@@ -219,7 +219,7 @@ resource "nutanix_virtual_machine" "TF-demo-01" {
     # image like we're doing here
     data_source_reference = {
         kind = "image"
-        uuid = nutanix_image.Windows_10_Disk.id
+        uuid = "ace1ae3a-67e9-4af1-9733-00f09499e87f"
       }
       
 
